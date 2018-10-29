@@ -1,0 +1,75 @@
+#include "include\defines.hpp"
+#include "include\params.hpp"
+#include "include\functions.hpp"
+#include "music\Music.hpp"
+#include "sounds\Sounds.hpp"
+
+
+// Mission Header
+class Header
+{
+  gameType = Escape; // FIXME
+  minPlayers = 1;
+  maxPlayers = 10;
+};
+
+onLoadName = MISSIONNAME;
+onLoadMission = MISSIONNAMEFULL;
+OnLoadMissionTime = FALSE;
+dev = "Tooth";
+briefingName = MISSIONNAMEFULL;
+author = "Tooth";
+overviewPicture = "a3\Missions_F_Gamma\data\img\MP_COOP_m03_overview_CA.paa";
+overviewText = MISSIONNAMEFULL;
+loadScreen = "loadscreen.paa"; 
+
+EscapeIsland = ISLAND;
+EscapeMod = MOD;
+EscapeVersion = VERSION;
+EscapeRelease = RELEASE;
+
+///////////////////////////////////////////////////////////////////////////////////////////
+Respawn = "INSTANT"; // FIXME
+RespawnDelay = 60; // FIXME
+respawnButton = 0; // FIXME
+
+disabledAI = 1;
+enableDebugConsole = 1;
+
+corpseLimit = 30;
+corpseRemovalMinTime = 600;
+corpseRemovalMaxTime = 1800; //seconds
+
+wreckLimit = 10;
+wreckRemovalMinTime = 600; //seconds
+wreckRemovalMaxTime = 1800; //seconds
+
+///////////////////////////////////////////////////////////////////////////////////////////
+ class CfgDebriefing
+{  
+    class End1
+    {
+        title = "Failed"; // FIXME
+        subtitle = "Everybody is dead"; // FIXME
+        description = ""; // FIXME
+        pictureBackground = ""; // FIXME
+    };
+};
+
+class CfgRemoteExec
+{        
+    // List of script functions allowed to be sent from client via remoteExec
+    class Functions
+    {
+        // State of remoteExec: 0-turned off, 1-turned on, taking whitelist into account, 2-turned on, however, ignoring whitelists (default because of backward compatibility)
+        mode = 2;
+        // Ability to send jip messages: 0-disabled, 1-enabled (default)
+        jip = 1;
+    };        
+    // List of script commands allowed to be sent from client via remoteExec
+    class Commands
+    {
+        class moveInAny { allowedTargets=0; jip=0; } // can target anyone, sending jip is turned off (overrides settings in the Commands class)
+	};
+};
+
