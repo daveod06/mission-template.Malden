@@ -18,3 +18,14 @@ _player enableStamina false;
 _player removeAllEventHandlers "HandleDamage";
 _player removeAllEventHandlers "Killed";
 _player addEventHandler ["HandleDamage", DJORevive_fnc_HandleDamageCustom];
+
+// Start saving player loadout periodically
+[] spawn {
+	while {true} do {
+		sleep 5;
+		if (alive _player) then {
+			_player setVariable ["respawnLoadout", getUnitLoadout _player]; 
+		};
+	};
+};
+

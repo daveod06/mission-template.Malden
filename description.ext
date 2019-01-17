@@ -1,8 +1,8 @@
-#include "include\defines.hpp"
-#include "include\params.hpp"
-#include "include\functions.hpp"
-#include "music\Music.hpp"
-#include "sounds\Sounds.hpp"
+#include "\include\defines.hpp"
+#include "\include\params.hpp"
+#include "\include\functions.hpp"
+#include "\music\Music.hpp"
+#include "\sounds\Sounds.hpp"
 
 
 // Mission Header

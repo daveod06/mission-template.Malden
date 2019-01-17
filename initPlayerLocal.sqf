@@ -101,28 +101,53 @@ if(hmd _player != "") then {
 	_player unlinkItem _hmd;
 };
 
-_player forceAddUniform ""; // FIXME
-_player addVest "rhsgref_alice_webbing";
-_player addBackpack "rhsgref_hidf_alicepack";
-_player addGoggles ""; // FIXME
-_player addItem "ItemRadio";
-_player assignItem "ItemRadio";
-_player addItem "ItemWatch";
-_player assignItem "ItemWatch";
-_player addItem "ItemMap";
-_player assignItem "ItemMap";
-_player addItem "ItemCompass";
-_player assignItem "ItemCompass";
-_player addHeadgear "rhs_beanie_green";
 
+if (Tooth_playerUniform != "") then
+{
+	player forceAddUniform Tooth_playerUniform;
+};
+if (Tooth_playerVest != "") then
+{
+	player addVest Tooth_playerVest;
+};
+if (Tooth_playerHeadgear != "") then
+{
+	player addHeadgear Tooth_playerHeadgear;
+};
+if (Tooth_playerGoggles != "") then
+{
+	player addGoggles Tooth_playerGoggles;
+};
+if (Tooth_playerBackpack != "") then
+{
+	player addBackpack Tooth_playerBackpack;
+};
+
+if (Tooth_playersHaveRadio) then
+{
+	player addItem "ItemRadio";
+	player assignItem "ItemRadio";
+};
+
+if (Tooth_playersHaveWatch) then
+{
+	player addItem "ItemWatch";
+	player assignItem "ItemWatch";
+};
+
+if (Tooth_playersHaveMap) then
+{
+	player addItem "ItemMap";
+	player assignItem "ItemMap";
+};
+
+if (Tooth_playersHaveCompass) then
+{
+	player addItem "ItemCompass";
+	player assignItem "ItemCompass";
+};
 
 enableTeamSwitch false;
-
-setViewDistance 9000;
-setTerrainGrid 6.25;
-setObjectViewDistance [4000,800];
-setDetailMapBlendPars [50, 150];
-
 
 // Start saving player loadout periodically
 [] spawn {

@@ -15,10 +15,10 @@ call compile preprocessFileLineNumbers "config.sqf";
 //enableSaving [true, true];
 enableSaving [ false, false ]; // Saving disabled without autosave.
 
-setViewDistance 9000;
-setTerrainGrid 6.25;
-setObjectViewDistance [4000,800];
-setDetailMapBlendPars [50, 150];
+setTerrainGrid (Param_Grass*3.125);
+setViewDistance (Param_ViewDistance);
+setObjectViewDistance [Param_ObjectViewDistance,Param_ObjectViewDistance*0.05];
+setDetailMapBlendPars [Param_DetailBlend,Param_DetailBlend*2.5];
 
 // Enable/Disbale animals, flies, and bugs -- false turns them off
 enableEnvironment true; 
