@@ -36,7 +36,7 @@ class Params
 		texts[]={"1:1 (Normal)","1:6 (Day = 4 Hours)","1:12 (Day = 2 Hours)","1:24 (Day = 1 Hour)","1:36 (Day = 40 Minutes)"};
 		default = 6;
 	};
-    class Param_Spacer1
+    class Param_Spacer2
     {
             title = "==================== Graphics/Rendering Settings ====================";
             values[] = {0};
@@ -76,7 +76,7 @@ class Params
 		texts[]={"Super Close (12)","Close (25)", "Normal (50)", "Far (100)", "Very Far (200)"};
 		default = 100;
 	};
-    class Param_Spacer7
+    class Param_Spacer3
     {
             title = "==================== Debug Settings ====================";
             values[] = {0};

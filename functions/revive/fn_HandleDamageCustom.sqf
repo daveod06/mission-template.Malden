@@ -78,16 +78,30 @@ if (_newDamage > 0 && !(_projectile isEqualTo "")) then {
 };
 
 // For players ignore damage if they are incapacitated and pass damage to bis revive handler
-if ( isPlayer _unit ) then {
-	if ( lifeState _unit == "INCAPACITATED" ) then {
-		//if we are incapacitated take no additional damage
-		_damage = _oldDamage;
-	} else {
-		_this set[ 2, _damage ];
-		//Call BI REVIVE HandleDamage EH passing new _damage value
-		_damage = _this call bis_fnc_reviveEhHandleDamage;
-	};
+//if ( isPlayer _unit ) then {
+//	if ( lifeState _unit == "INCAPACITATED" ) then {
+//		//if we are incapacitated take no additional damage
+//		_damage = _oldDamage;
+//	} else {
+//		_this set[ 2, _damage ];
+//		//Call BI REVIVE HandleDamage EH passing new _damage value
+//		_damage = _this call bis_fnc_reviveEhHandleDamage;
+//	};
+//};
+
+// need to integrate this from the old damge handler
+if (alive _unit
+	&& {_damage >= 1}
+	&& {!(_unit getVariable ["AT_Revive_isUnconscious",false])}
+	&& {_hitSelection in ["","head","face_hub","head_hit","neck","spine1","spine2","spine3","pelvis","body"]}
+) then {
+	_unit setDamage 0;
+	_unit allowDamage false;
+	_amountOfDamage = 0;
+	[_unit, _killer] spawn ATR_FNC_Unconscious;
+//	diag_log text "PLAYER SHOULD BE DEAD NOW";
 };
+
 
 diag_log format[ "pHealth: %1 selection: %2 oldTotal: %3 newTotal: %4 incomingDmg: %6 appliedDmg: %6", _playerHealth, _hitSelection, _oldDamage, _damage, _incomingDamage, _newDamage];
 diag_log format[ "Damage reduction applied to %1", _unit ];

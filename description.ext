@@ -1,8 +1,8 @@
-#include "\include\defines.hpp"
-#include "\include\params.hpp"
-#include "\include\functions.hpp"
-#include "\music\Music.hpp"
-#include "\sounds\Sounds.hpp"
+#include "include\defines.hpp"
+#include "include\params.hpp"
+#include "include\functions.hpp"
+#include "music\Music.hpp"
+#include "sounds\Sounds.hpp"
 
 
 // Mission Header
@@ -21,7 +21,7 @@ briefingName = MISSIONNAMEFULL;
 author = "Tooth";
 overviewPicture = "a3\Missions_F_Gamma\data\img\MP_COOP_m03_overview_CA.paa";
 overviewText = MISSIONNAMEFULL;
-loadScreen = "loadscreen.paa"; 
+//loadScreen = "loadscreen.paa"; 
 
 EscapeIsland = ISLAND;
 EscapeMod = MOD;
@@ -33,7 +33,7 @@ Respawn = "INSTANT"; // FIXME
 RespawnDelay = 60; // FIXME
 respawnButton = 0; // FIXME
 
-disabledAI = 1;
+disabledAI = 0;
 enableDebugConsole = 1;
 
 corpseLimit = 30;

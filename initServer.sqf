@@ -1,4 +1,4 @@
-if (!isServer or hasInterface) exitWith {};
+//if (!isServer or hasInterface) exitWith {};
 
 // set up zeus for 4 players
 missionCurators = [];
@@ -16,5 +16,5 @@ CuratorLogicGroup = creategroup sideLogic;
     };
 };
 
-# Add Spawning for Zeus modules and HCs
+//# Add Spawning for Zeus modules and HCs
 

@@ -1,4 +1,4 @@
-private["_player","_didJIP"];
+params ["_player", "_didJIP"];
 
 diag_log format["initPlayerServer run for %1", name _player];
 
@@ -10,6 +10,7 @@ if(name _player == "HC1") then
          ["Getting HC1 ID failed!"] spawn a3e_fnc_debugmsg;
     };
 }
+/*
 elif (name _player == "HC2") then 
 {
     ["HC present. Offloading AI."] spawn a3e_fnc_debugmsg;
@@ -26,6 +27,7 @@ elif (name _player == "HC3") then
          ["Getting HC3 ID failed!"] spawn a3e_fnc_debugmsg;
     };
 }
+*/
 else 
 {
 	

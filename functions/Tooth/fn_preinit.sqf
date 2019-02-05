@@ -4,13 +4,13 @@ Tooth_year = 1982;
 Tooth_month = 6;
 Tooth_day = 7;
 
-Tooth_playerUniform = ;
+Tooth_playerUniform = "";
 Tooth_playerVest = "";
 Tooth_playerHeadgear = "";
 Tooth_playerGoggles = "";
 Tooth_playerBackpack = "";
-Tooth_playersHaveRadio = false;
-Tooth_playersHaveWatch = false;
-Tooth_playersHaveMap = false;
-Tooth_playersHaveCompass = false;
+Tooth_playersHaveRadio = true;
+Tooth_playersHaveWatch = true;
+Tooth_playersHaveMap = true;
+Tooth_playersHaveCompass = true;
 

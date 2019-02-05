@@ -7,25 +7,39 @@ params ["_player", "_didJIP"];
 diag_log format["initPlayerLocal run for %1", name _player];
 
 // stamina stuff
-_player setFatigue 0.0;
+//_player setFatigue 0.0;
 _player enableStamina false;
-0 = [] spawn
+0 = [_player] spawn
 {
+	_player = _this select 0;
     while {alive _player} do
     {
-        _player setFatigue 0.0;
+        //_player setFatigue 0.0;
         _player enableStamina false;
         sleep 5.0;
     };
 };
 
-// reduce damage
+// reduce damage + revive handlers
 _player removeAllEventHandlers "HandleDamage";
 _player removeAllEventHandlers "Killed";
 _player addEventHandler ["HandleDamage", DJORevive_fnc_HandleDamageCustom];
 
+AT_Revive_StaticRespawns = [];
+AT_Revive_enableRespawn = false;
+AT_Revive_clearedDistance = 0;
+AT_Revive_Camera = 1;
+
+[] call ATR_FNC_ReviveInit;
+
+// mag repack
+[] execVM "scripts\outlw_magRepack\MagRepack_init_sv.sqf";
+
+
+
 // Start saving player loadout periodically
-[] spawn {
+[_player] spawn {
+	_player = _this select 0;
 	while {true} do {
 		sleep 5;
 		if (alive _player) then {
@@ -89,13 +103,8 @@ _player unassignItem "CUP_NVG_PVS14";
 _player removeItem "CUP_NVG_PVS14";
 
 
-removeAllWeapons _player;
-removeAllItems _player;
-removeUniform _player;
-removeBackpack _player;
-removeVest _player;
-removeHeadgear _player;
-removeGoggles _player;
+//removeAllWeapons _player;
+//removeAllItems _player;
 if(hmd _player != "") then {
 	private _hmd = hmd _player;
 	_player unlinkItem _hmd;
@@ -104,22 +113,27 @@ if(hmd _player != "") then {
 
 if (Tooth_playerUniform != "") then
 {
+    removeUniform _player;    
 	player forceAddUniform Tooth_playerUniform;
 };
 if (Tooth_playerVest != "") then
 {
+    removeVest _player;    
 	player addVest Tooth_playerVest;
 };
 if (Tooth_playerHeadgear != "") then
 {
+    removeHeadgear _player;    
 	player addHeadgear Tooth_playerHeadgear;
 };
 if (Tooth_playerGoggles != "") then
 {
+    removeGoggles _player;    
 	player addGoggles Tooth_playerGoggles;
 };
 if (Tooth_playerBackpack != "") then
 {
+    removeBackpack _player;    
 	player addBackpack Tooth_playerBackpack;
 };
 
@@ -150,7 +164,8 @@ if (Tooth_playersHaveCompass) then
 enableTeamSwitch false;
 
 // Start saving player loadout periodically
-[] spawn {
+[_player] spawn {
+	_player = _this select 0;
 	while {true} do {
 		sleep 5;
 		if (alive _player) then {
